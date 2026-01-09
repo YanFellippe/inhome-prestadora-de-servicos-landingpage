@@ -1,21 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Garantir que o viewport está correto
     const viewport = document.querySelector('meta[name="viewport"]');
     if (viewport) {
         viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
     }
-
-    // Inicializar AOS após um pequeno delay para evitar problemas de layout
     setTimeout(() => {
         AOS.init({
             duration: 600,
-            easing: 'ease-in-out',
+            easing: 'ease-out',
             once: true,
             offset: 50,
-            disable: function() {
-                // Desabilitar em telas muito pequenas se necessário
-                return window.innerWidth < 768 && window.innerHeight < 600;
-            }
+            delay: 0,
+            disable: false,
+            startEvent: 'DOMContentLoaded',
+            useClassNames: false,
+            disableMutationObserver: false,
+            debounceDelay: 50,
+            throttleDelay: 99,
+            // Configurações específicas para mobile
+            ...(window.innerWidth <= 768 && {
+                duration: 400,
+                offset: 30
+            })
         });
     }, 100);
 
@@ -26,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     initHeaderScroll();
     
-    // Forçar reflow após carregamento
     setTimeout(() => {
         window.dispatchEvent(new Event('resize'));
     }, 200);
@@ -105,7 +109,6 @@ function initHeaderScroll() {
             header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.05)";
         }
 
-        // Hide/show header on scroll (desabilitado em mobile para evitar bugs)
         if (window.innerWidth > 768) {
             if (scrollTop > lastScrollTop && scrollTop > 200) {
                 header.style.transform = "translateY(-100%)";
