@@ -21,6 +21,8 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 body {
@@ -29,12 +31,16 @@ body {
     color: var(--text);
     background-color: var(--white);
     overflow-x: hidden;
+    min-width: 320px;
+    position: relative;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* ===== TIPOGRAFIA ===== */
@@ -208,9 +214,11 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
     top: 0;
     left: 0;
     right: 0;
+    width: 100%;
     z-index: 999;
     transition: var(--transition);
     border-bottom: 1px solid var(--border);
+    will-change: transform;
 }
 
 .nav {
@@ -922,6 +930,25 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
     }
 }
 
+/* Regras específicas para mobile - aplicadas imediatamente */
+@media (max-width: 768px) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .header {
+        padding: 0.75rem 0;
+        backdrop-filter: blur(8px);
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -1224,4 +1251,62 @@ img {
         page-break-inside: avoid;
         padding: 1rem 0;
     }
+}
+/* ===== MOBILE LAYOUT FIXES ===== */
+@media (max-width: 768px) {
+    /* Prevenir layout shift em mobile */
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    .aos-animate {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    /* Otimizações para mobile */
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+        min-height: 100vh;
+    }
+    
+    .header {
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+    
+    .container {
+        min-width: 0;
+        overflow-x: hidden;
+    }
+}
+
+/* ===== LAYOUT STABILITY ===== */
+.hero,
+.section {
+    contain: layout style;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Prevenir zoom em inputs em iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select,
+    textarea,
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+        font-size: 16px;
+    }
+}
 }

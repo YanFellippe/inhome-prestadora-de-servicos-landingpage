@@ -1,16 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
-    AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100
-    });
+    // Garantir que o viewport está correto
+    const viewport = document.querySelector('meta[name="viewport"]');
+    if (viewport) {
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+    }
 
+    // Inicializar AOS após um pequeno delay para evitar problemas de layout
+    setTimeout(() => {
+        AOS.init({
+            duration: 600,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 50,
+            disable: function() {
+                // Desabilitar em telas muito pequenas se necessário
+                return window.innerWidth < 768 && window.innerHeight < 600;
+            }
+        });
+    }, 100);
+
+    // Inicializar funcionalidades
     initMobileMenu();
     initScrollEffects();
     initFormHandler();
     initSmoothScroll();
     initHeaderScroll();
+    
+    // Forçar reflow após carregamento
+    setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+    }, 200);
 });
 
 function initMobileMenu() {
@@ -71,8 +90,9 @@ function initScrollEffects() {
 function initHeaderScroll() {
     const header = document.querySelector(".header");
     let lastScrollTop = 0;
+    let ticking = false;
 
-    window.addEventListener("scroll", () => {
+    function updateHeader() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         if (scrollTop > 100) {
@@ -85,14 +105,29 @@ function initHeaderScroll() {
             header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.05)";
         }
 
-        if (scrollTop > lastScrollTop && scrollTop > 200) {
-            header.style.transform = "translateY(-100%)";
+        // Hide/show header on scroll (desabilitado em mobile para evitar bugs)
+        if (window.innerWidth > 768) {
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                header.style.transform = "translateY(-100%)";
+            } else {
+                header.style.transform = "translateY(0)";
+            }
         } else {
             header.style.transform = "translateY(0)";
         }
         
         lastScrollTop = scrollTop;
-    });
+        ticking = false;
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener("scroll", requestTick, { passive: true });
 }
 
 function initSmoothScroll() {
