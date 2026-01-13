@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initScrollEffects();
     initFormHandler();
+    initPhoneMask();
     initSmoothScroll();
     initHeaderScroll();
     
@@ -165,7 +166,8 @@ function initFormHandler() {
             
             const formData = new FormData(this);
             const nome = this.querySelector('input[type="text"]').value;
-            const telefone = this.querySelector('input[type="tel"]').value;
+            const telefoneFormatado = this.querySelector('input[type="tel"]').value;
+            const telefone = telefoneFormatado.replace(/\D/g, ''); // Remove formatação para validação
             const servico = this.querySelector('select').value;
             const descricao = this.querySelector('textarea').value;
             
@@ -174,10 +176,16 @@ function initFormHandler() {
                 return;
             }
             
+            // Validar telefone (deve ter pelo menos 10 dígitos)
+            if (telefone.length < 10) {
+                showNotification('Por favor, insira um telefone válido.', 'error');
+                return;
+            }
+            
             const mensagem = `Olá! Gostaria de solicitar um orçamento.
             
 *Nome:* ${nome}
-*Telefone para Contato:* ${telefone}
+*Telefone para Contato:* ${telefoneFormatado}
 *Serviço:* ${getServiceName(servico)}
 *Descrição:* ${descricao || 'Não informado'}`;
             
@@ -186,6 +194,61 @@ function initFormHandler() {
             
             this.reset();
             showNotification('Redirecionando para o WhatsApp...', 'success');
+        });
+    }
+}
+
+// ===== MÁSCARA DE TELEFONE =====
+function initPhoneMask() {
+    const phoneInput = document.getElementById('telefone');
+    
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+            
+            // Limita a 11 dígitos (celular com DDD)
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+            }
+            
+            // Aplica a máscara
+            if (value.length <= 10) {
+                // Telefone fixo: (99) 9999-9999
+                value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+            } else {
+                // Celular: (99) 9 9999-9999
+                value = value.replace(/^(\d{2})(\d{1})(\d{4})(\d{0,4}).*/, '($1) $2 $3-$4');
+            }
+            
+            e.target.value = value;
+        });
+        
+        // Permite apenas números, backspace, delete e tab
+        phoneInput.addEventListener('keydown', function(e) {
+            const allowedKeys = [
+                'Backspace', 'Delete', 'Tab', 'Escape', 'Enter',
+                'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'
+            ];
+            
+            if (allowedKeys.includes(e.key) || 
+                (e.key >= '0' && e.key <= '9') ||
+                (e.ctrlKey && ['a', 'c', 'v', 'x'].includes(e.key.toLowerCase()))) {
+                return;
+            }
+            
+            e.preventDefault();
+        });
+        
+        // Remove formatação ao colar
+        phoneInput.addEventListener('paste', function(e) {
+            e.preventDefault();
+            const paste = (e.clipboardData || window.clipboardData).getData('text');
+            const numbersOnly = paste.replace(/\D/g, '');
+            
+            if (numbersOnly.length <= 11) {
+                phoneInput.value = numbersOnly;
+                phoneInput.dispatchEvent(new Event('input'));
+            }
         });
     }
 }

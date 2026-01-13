@@ -221,6 +221,13 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
     font-weight: 700;
     font-size: 1.5rem;
     color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    color: var(--secondary);
+    transform: scale(1.02);
 }
 
 .logo img {
