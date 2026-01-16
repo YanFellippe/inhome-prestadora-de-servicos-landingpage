@@ -1,0 +1,23 @@
+{
+  "name": "inhome-prestacao-servicos",
+  "version": "1.0.0",
+  "description": "Landing page profissional para InHome - Prestação de Serviços em Goiânia",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve",
+    "preview": "npx serve"
+  },
+  "keywords": [
+    "construção",
+    "reforma",
+    "manutenção",
+    "goiânia",
+    "prestação de serviços"
+  ],
+  "author": "InHome Prestação de Serviços",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "seu-repositorio-aqui"
+  }
+}

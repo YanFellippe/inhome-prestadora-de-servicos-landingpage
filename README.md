@@ -1,86 +1,154 @@
 # InHome - Prestação de Serviços
 
-Landing page profissional para a empresa InHome - Prestação de Serviços, especializada em construção, reforma e manutenção em Goiânia e região.
+Landing page profissional para a empresa InHome, especializada em construção, reforma e manutenção em Goiânia e região.
 
-## 🚀 Características Implementadas
+## 🏗️ Sobre o Projeto
 
-### ✅ Design Moderno e Profissional
-- Layout limpo e confiável
-- Paleta de cores mantida (marrom, dourado, bege)
-- Tipografia moderna (Inter + Poppins)
-- Visual que transmite credibilidade
+Site institucional moderno e responsivo desenvolvido para apresentar os serviços da InHome e facilitar o contato com clientes através de formulário integrado com WhatsApp.
 
-### ✅ Animações e Interatividade
-- Animações suaves de scroll (AOS - Animate On Scroll)
-- Hover effects nos cards e botões
-- Transições CSS otimizadas
-- Parallax sutil no hero
-- Fade-in, slide-up e zoom-in effects
+## ✨ Características
 
-### ✅ 100% Responsivo
-- Design mobile-first
-- Funciona perfeitamente em celulares, tablets e desktops
-- Menu hamburger para dispositivos móveis
-- Imagens responsivas e otimizadas
+- 🎨 Design moderno e profissional
+- 📱 100% responsivo (mobile, tablet, desktop)
+- ⚡ Performance otimizada
+- 🎭 Animações suaves (AOS)
+- 📞 Integração com WhatsApp
+- 📧 Formulário de contato
+- 🎯 CTAs estratégicos para conversão
 
-### ✅ Serviços Destacados
-- ✅ Construção
-- ✅ Reformas e reparos
-- ✅ Instalação elétrica e hidráulica
-- ✅ Pintura residencial, comercial e predial
-- ✅ Desentupimento de esgoto
-- ✅ Instalação e revestimento de piso e parede
-- ✅ Manutenção em telhados
+## 🛠️ Serviços Destacados
 
-### ✅ Informações da Empresa
-- 📧 E-mail: inhomeprestacaodeservicos@gmail.com
-- 📱 WhatsApp: (62) 99927-1152
-- 🧾 CNPJ: 43.868.869/0001-65
-- 📍 Atuação: Goiânia e regiões próximas
+- Construção
+- Reformas e Reparos
+- Instalação Elétrica e Hidráulica
+- Pintura Residencial, Comercial e Predial
+- Desentupimento de Esgoto
+- Instalação e Revestimento de Piso e Parede
+- Manutenção em Telhados
+- Outros Serviços
 
-### ✅ Elementos Institucionais
-- Lemas da empresa destacados: #Honestidade | #Profissionalismo | #Comprometimento
-- Seção "Sobre" com informações da empresa
-- Seção "Valores" com os pilares da empresa
+## 📞 Informações de Contato
 
-### ✅ Conversão e CTAs
-- Botão flutuante do WhatsApp com animação
-- Múltiplos CTAs estrategicamente posicionados
-- Formulário de contato integrado com WhatsApp
-- Links diretos para WhatsApp com mensagens pré-definidas
+- **WhatsApp**: (62) 99927-1152
+- **E-mail**: inhomeprestacaodeservicos@gmail.com
+- **Instagram**: [@inhomeprestacao](https://www.instagram.com/inhomeprestacao/)
+- **CNPJ**: 43.868.869/0001-65
+- **Atuação**: Goiânia e regiões próximas
 
-### ✅ Imagens Ilustrativas
-- Imagens realistas de construção e reforma (Unsplash)
-- Galeria de trabalhos realizados
-- Imagens otimizadas para web
+## 🎯 Valores da Empresa
 
-## 🛠️ Tecnologias Utilizadas
+- #Honestidade
+- #Profissionalismo
+- #Comprometimento
 
-- **HTML5** - Estrutura semântica
-- **CSS3** - Estilos modernos com Flexbox e Grid
-- **JavaScript ES6+** - Interatividade e animações
-- **AOS Library** - Animações de scroll
-- **Font Awesome** - Ícones
-- **Google Fonts** - Tipografia (Inter + Poppins)
+## 🚀 Tecnologias Utilizadas
 
-## 📱 Funcionalidades Especiais
+- HTML5
+- CSS3 (Flexbox, Grid, Animações)
+- JavaScript ES6+
+- AOS (Animate On Scroll)
+- Font Awesome (Ícones)
+- Google Fonts (Inter + Poppins)
 
-### WhatsApp Integration
-- Botão flutuante com animação pulse
-- Links diretos com mensagens pré-formatadas
-- Formulário que redireciona para WhatsApp
+## 📂 Estrutura do Projeto
 
-### Performance
-- Lazy loading de imagens
-- CSS otimizado para performance
-- JavaScript com debounce para scroll events
-- Animações com requestAnimationFrame
+```
+/
+├── index.html              # Página principal
+├── css/
+│   └── styles.css          # Estilos CSS
+├── js/
+│   └── scripts.js          # JavaScript
+├── assets/
+│   └── img/
+│       └── logo.png        # Logo da empresa
+├── vercel.json             # Configuração Vercel
+├── package.json            # Informações do projeto
+├── .gitignore              # Arquivos ignorados
+├── README.md               # Este arquivo
+└── DEPLOY.md               # Instruções de deploy
+```
 
-### Acessibilidade
-- Foco visível em elementos interativos
-- Suporte a prefers-reduced-motion
-- Estrutura semântica HTML
-- Alt text em todas as imagens
+## 🌐 Deploy
+
+Este projeto está pronto para deploy no Vercel sem necessidade de build ou configurações adicionais.
+
+### Deploy Rápido
+
+1. Faça fork/clone do repositório
+2. Conecte com Vercel
+3. Deploy automático!
+
+Para instruções detalhadas, veja [DEPLOY.md](DEPLOY.md)
+
+## 💻 Desenvolvimento Local
+
+### Opção 1: Live Server (VS Code)
+```bash
+# Instale a extensão Live Server no VS Code
+# Clique com botão direito em index.html
+# Selecione "Open with Live Server"
+```
+
+### Opção 2: Python
+```bash
+python -m http.server 8000
+```
+
+### Opção 3: Node.js
+```bash
+npx serve
+```
+
+Acesse: `http://localhost:8000`
+
+## 📱 Funcionalidades
+
+### Header
+- Logo clicável (retorna ao início)
+- Menu de navegação responsivo
+- Botão CTA para WhatsApp
+- Menu hamburger para mobile
+
+### Hero Section
+- Título impactante
+- Descrição dos serviços
+- Botões de ação (WhatsApp e Ver Serviços)
+- Imagem ilustrativa
+
+### Serviços
+- 8 cards de serviços
+- Ícones personalizados
+- Hover effects
+- Lista de características
+
+### Valores
+- 3 pilares da empresa
+- Cards com ícones
+- Animações ao scroll
+
+### Galeria
+- Imagens dos trabalhos
+- Overlay com informações
+- Grid responsivo
+
+### Contato
+- Formulário integrado com WhatsApp
+- Máscara de telefone brasileiro
+- Validação de campos
+- Informações de contato
+
+### Footer
+- Links rápidos
+- Informações da empresa
+- Redes sociais
+- CNPJ e localização
+
+### Extras
+- Botão flutuante do WhatsApp
+- Animações AOS
+- Smooth scroll
+- Responsividade completa
 
 ## 🎨 Paleta de Cores
 
@@ -92,52 +160,51 @@ Landing page profissional para a empresa InHome - Prestação de Serviços, espe
 --text: #4A4A4A       /* Texto principal */
 ```
 
-## 📂 Estrutura de Arquivos
+## 📊 Performance
 
+- ✅ HTML semântico
+- ✅ CSS otimizado
+- ✅ JavaScript modular
+- ✅ Imagens otimizadas
+- ✅ Lazy loading
+- ✅ Cache otimizado
+
+## 🔧 Customização
+
+### Alterar Informações de Contato
+
+Edite no `index.html`:
+- WhatsApp: Procure por `556299271152`
+- E-mail: Procure por `inhomeprestacaodeservicos@gmail.com`
+- Instagram: Procure por `@inhomeprestacao`
+
+### Alterar Cores
+
+Edite as variáveis CSS em `css/styles.css`:
+```css
+:root {
+    --primary: #3D2B1F;
+    --secondary: #C5A059;
+    /* ... */
+}
 ```
-├── index.html          # Página principal
-├── css/
-│   └── styles.css      # Estilos CSS
-├── js/
-│   └── scripts.js      # JavaScript
-├── assets/
-│   └── img/
-│       └── logo.png    # Logo da empresa
-└── README.md           # Este arquivo
-```
 
-## 🚀 Como Usar
+### Adicionar/Remover Serviços
 
-1. **Substitua o logo**: Coloque o logo da InHome em `assets/img/logo.png`
-2. **Personalize as imagens**: Substitua as URLs do Unsplash por imagens reais dos trabalhos
-3. **Teste os links**: Verifique se todos os links do WhatsApp estão funcionando
-4. **Deploy**: Faça upload dos arquivos para seu servidor web
+Edite a seção de serviços no `index.html` e a função `getServiceName()` no `js/scripts.js`
 
-## 📞 Contatos Configurados
+## 📄 Licença
 
-- **WhatsApp**: (62) 99927-1152
-- **E-mail**: inhomeprestacaodeservicos@gmail.com
-- **CNPJ**: 43.868.869/0001-65
+Este projeto foi desenvolvido para InHome - Prestação de Serviços.
 
-## 🎯 Otimizações SEO
+## 👨‍💻 Suporte
 
-- Meta tags otimizadas
-- Estrutura HTML semântica
-- Títulos hierárquicos (H1, H2, H3)
-- Alt text em imagens
-- URLs amigáveis nos links internos
-
-## 📈 Conversão
-
-A landing page foi estruturada pensando em conversão:
-- Hero section impactante
-- CTAs claros e visíveis
-- Formulário de contato simples
-- Botão WhatsApp sempre visível
-- Seção de valores para gerar confiança
-- Galeria de trabalhos como prova social
+Para dúvidas ou suporte:
+- WhatsApp: (62) 99927-1152
+- E-mail: inhomeprestacaodeservicos@gmail.com
 
 ---
 
-**Desenvolvido para InHome - Prestação de Serviços**  
+**Desenvolvido com ❤️ para InHome - Prestação de Serviços**
+
 *Honestidade | Profissionalismo | Comprometimento*

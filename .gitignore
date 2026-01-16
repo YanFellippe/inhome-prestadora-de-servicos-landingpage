@@ -1,0 +1,24 @@
+# Vercel
+.vercel
+
+# Backup files
+*.backup
+*-backup.*
+css/styles-backup.css
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
